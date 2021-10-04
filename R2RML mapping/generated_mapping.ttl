@@ -1,0 +1,1210 @@
+@prefix dcm: <http://semantic-dicom.org/dcm#> .
+@prefix dica: <http://dica.nl/fair/rt/> .
+@prefix fma: <http://purl.org/sig/ont/fma/> .
+@prefix icd10: <http://purl.bioontology.org/ontology/ICD10/C50> .
+@prefix map: <http://localhost/mapping/> .
+@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix query: <http://localhost/query/> .
+@prefix roo: <http://www.cancerdata.org/roo/> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+map:Patient a rr:TriplesMap ;
+    rr:logicalTable query:Patient ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:Disease1 ] ;
+            rr:predicate roo:P100008 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:Gender ] ;
+            rr:predicate roo:P100018 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:Organization ] ;
+            rr:predicate roo:P100039 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:Dob ] ;
+            rr:predicate roo:P100327 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:RadioTherapy ] ;
+            rr:predicate roo:P100301 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:Death ] ;
+            rr:predicate ncit:P100253 ] ;
+    rr:subjectMap [ rr:class ncit:C16960 ;
+            rr:template "organization/{organization}/patient/{upn}" ;
+            rr:termType rr:IRI ] .
+
+query:RTDates a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, rt_start_date, rt_end_date from bestralingsplan" .
+
+map:Axilla12RoiMap a rr:TriplesMap ;
+    rr:logicalTable map:Axilla12Table ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "axil12" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class dica:Axilla12 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Axilla12" ;
+            rr:termType rr:IRI ] .
+
+map:Axilla12Table a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, axil12 from bestralingsplan where axil12 is True " .
+
+map:Axilla34RoiMap a rr:TriplesMap ;
+    rr:logicalTable map:Axilla34Table ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "axil34" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class dica:Axilla34 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Axilla34" ;
+            rr:termType rr:IRI ] .
+
+map:Axilla34Table a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, axil34 from bestralingsplan where axil34 is True " .
+
+map:AxillaRoiMap a rr:TriplesMap ;
+    rr:logicalTable map:AxillaTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ] ;
+                    rr:parentTriplesMap map:Axilla34RoiMap ] ;
+            rr:predicate roo:P100236 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ] ;
+                    rr:parentTriplesMap map:Axilla12RoiMap ] ;
+            rr:predicate roo:P100236 ] ;
+    rr:subjectMap [ rr:class fma:fma71741 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Axilla" ;
+            rr:termType rr:IRI ] .
+
+map:AxillaTable a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, case when axil12 is True then '1-2' end as axil12, case when axil34 is True then '3-4' end as axil34 from bestralingsplan where axil12 is True or axil34 is True" .
+
+map:Boost1 a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseTumorbed ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ] ;
+                    rr:parentTriplesMap map:Sequentialboost1 ] ;
+            rr:predicate dica:hasBoostType ],
+        [ rr:objectMap [ rr:column "boost1" ] ;
+            rr:predicate roo:P100041 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ] ;
+                    rr:parentTriplesMap map:SIBboost1 ] ;
+            rr:predicate dica:hasBoostType ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ] ;
+                    rr:parentTriplesMap map:RoiPtvP ] ;
+            rr:predicate roo:P100213 ] ;
+    rr:subjectMap [ rr:class dica:Boost ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseTumorbed/Boost" ;
+            rr:termType rr:IRI ] .
+
+map:Boost2 a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseKlierbst ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "boost2" ] ;
+            rr:predicate roo:P100041 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:Sequentialboost2 ] ;
+            rr:predicate dica:hasBoostType ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:RoiPtvN ] ;
+            rr:predicate roo:P100213 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ] ;
+                    rr:parentTriplesMap map:SIBboost2 ] ;
+            rr:predicate dica:hasBoostType ] ;
+    rr:subjectMap [ rr:class dica:Boost ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseNode/Boost" ;
+            rr:termType rr:IRI ] .
+
+map:BreastRoiMap a rr:TriplesMap ;
+    rr:logicalTable map:BreastTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:PartialBreastIrradiation ] ;
+            rr:predicate roo:P100403 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:ctvMamma ] ;
+            rr:predicate roo:P100315 ] ;
+    rr:subjectMap [ rr:class fma:fma9601 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Breast" ;
+            rr:termType rr:IRI ] .
+
+map:BreastTable a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct from bestralingsplan where mamma <> 0 " .
+
+map:Death a rr:TriplesMap ;
+    rr:logicalTable query:Death ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:DeathDate ] ;
+            rr:predicate ncit:P100250 ] ;
+    rr:subjectMap [ rr:class ncit:C28554 ;
+            rr:template "organization/{organization}/patient/{upn}/death" ;
+            rr:termType rr:IRI ] .
+
+map:DeathDate a rr:TriplesMap ;
+    rr:logicalTable query:Death ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "datovl" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class ncit:C25164 ;
+            rr:template "organization/{organization}/patient/{upn}/death/date" ;
+            rr:termType rr:IRI ] .
+
+map:Dob a rr:TriplesMap ;
+    rr:logicalTable query:Patient ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "geboortedatum" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class ncit:C25155 ;
+            rr:template "organization/{organization}/patient/{upn}/dob" ;
+            rr:termType rr:IRI ] .
+
+map:DoseElective a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseElective ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ] ;
+                    rr:parentTriplesMap map:RoiTotalElective ] ;
+            rr:predicate roo:P100213 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ] ;
+                    rr:parentTriplesMap map:FractionDose3 ] ;
+            rr:predicate roo:P100268 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:PrescribedFractions3 ] ;
+            rr:predicate roo:P100224 ] ;
+    rr:subjectMap [ rr:class roo:C100013 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseElective" ;
+            rr:termType rr:IRI ] .
+
+map:DoseNode a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseKlierbst ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:Boost2 ] ;
+            rr:predicate dica:hasBoost ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ] ;
+                    rr:parentTriplesMap map:FractionDose2 ] ;
+            rr:predicate roo:P100268 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:PrescribedFractions2 ] ;
+            rr:predicate roo:P100224 ] ;
+    rr:subjectMap [ rr:class roo:C100013 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseNode" ;
+            rr:termType rr:IRI ] .
+
+map:DoseTumorbed a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseTumorbed ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:FractionDose1 ] ;
+            rr:predicate roo:P100268 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:Boost1 ] ;
+            rr:predicate dica:hasBoost ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:PrescribedFractions1 ] ;
+            rr:predicate roo:P100224 ] ;
+    rr:subjectMap [ rr:class roo:C100013 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseTumorbed" ;
+            rr:termType rr:IRI ] .
+
+map:FractionDose1 a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseTumorbed ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:FractionDoseGray1 ] ;
+            rr:predicate roo:P100027 ] ;
+    rr:subjectMap [ rr:class roo:C100353 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseTumorbed/FractionDose" ;
+            rr:termType rr:IRI ] .
+
+map:FractionDose2 a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseKlierbst ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:FractionDoseGray2 ] ;
+            rr:predicate roo:P100027 ] ;
+    rr:subjectMap [ rr:class roo:C100353 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseNode/FractionDose" ;
+            rr:termType rr:IRI ] .
+
+map:FractionDose3 a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseElective ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:FractionDoseGray3 ] ;
+            rr:predicate roo:P100027 ] ;
+    rr:subjectMap [ rr:class roo:C100353 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseElective/FractionDose" ;
+            rr:termType rr:IRI ] .
+
+map:FractionDoseGray1 a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseTumorbed ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "dosistmrbed" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class obo:UO_0000134 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseTumorbed/FractionDose/gray" ;
+            rr:termType rr:IRI ] .
+
+map:FractionDoseGray2 a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseKlierbst ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "dosisklierbst" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class obo:UO_0000134 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseNode/FractionDose/gray" ;
+            rr:termType rr:IRI ] .
+
+map:FractionDoseGray3 a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseElective ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "dosiselectief" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class obo:UO_0000134 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseElective/FractionDose/gray" ;
+            rr:termType rr:IRI ] .
+
+map:Gender a rr:TriplesMap ;
+    rr:logicalTable query:Patient ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "geslacht" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class ncit:C28421 ;
+            rr:template "organization/{organization}/patient/{upn}/gender" ;
+            rr:termType rr:IRI ] .
+
+map:HeartD2 a rr:TriplesMap ;
+    rr:logicalTable map:HeartTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "hartd2" ;
+                    rr:datatype xsd:float ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class roo:C100326 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Heart/D2" ;
+            rr:termType rr:IRI ] .
+
+map:HeartDvhMap a rr:TriplesMap ;
+    rr:logicalTable map:HeartTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:HeartMeanDose ] ;
+            rr:predicate roo:P100212 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:HeartRoiMap ] ;
+            rr:predicate roo:P100213 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:HeartD2 ] ;
+            rr:predicate roo:P100212 ] ;
+    rr:subjectMap [ rr:class ncit:C112816 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Heart-dvh" ;
+            rr:termType rr:IRI ] .
+
+map:HeartMeanDose a rr:TriplesMap ;
+    rr:logicalTable map:HeartTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "hartdmn" ;
+                    rr:datatype xsd:float ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class roo:C100361 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Heart/MeanDose" ;
+            rr:termType rr:IRI ] .
+
+map:HeartRoiMap a rr:TriplesMap ;
+    rr:logicalTable map:HeartTable ;
+    rr:subjectMap [ rr:class roo:C100129 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Heart" ;
+            rr:termType rr:IRI ] .
+
+map:InternalMammaryNodesRoiMap a rr:TriplesMap ;
+    rr:logicalTable map:InternalMammaryNodesTable ;
+    rr:subjectMap [ rr:class fma:fma71760 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/InternalMammaryNodes" ;
+            rr:termType rr:IRI ] .
+
+map:InternalMammaryNodesTable a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct from bestralingsplan where paras is True " .
+
+map:InterpectoralRoiMap a rr:TriplesMap ;
+    rr:logicalTable map:InterpectoralTable ;
+    rr:subjectMap [ rr:class fma:fma71750 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Interpectoral" ;
+            rr:termType rr:IRI ] .
+
+map:InterpectoralTable a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct from bestralingsplan where interpec is True " .
+
+map:Laterality1 a rr:TriplesMap ;
+    rr:logicalTable query:BestralingsplanQuery ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "bestraling_later" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class ncit:C25185 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/laterality" ;
+            rr:termType rr:IRI ] .
+
+map:LungsDvhMap a rr:TriplesMap ;
+    rr:logicalTable map:LungsTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:LungsMeanDose ] ;
+            rr:predicate roo:P100212 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:LungsRoiMap ] ;
+            rr:predicate roo:P100213 ] ;
+    rr:subjectMap [ rr:class ncit:C112816 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Lungs-dvh" ;
+            rr:termType rr:IRI ] .
+
+map:LungsMeanDose a rr:TriplesMap ;
+    rr:logicalTable map:LungsTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "long" ;
+                    rr:datatype xsd:float ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class roo:C100361 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Lungs/MeanDose" ;
+            rr:termType rr:IRI ] .
+
+map:LungsRoiMap a rr:TriplesMap ;
+    rr:logicalTable map:LungsTable ;
+    rr:subjectMap [ rr:class roo:C100139 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Lungs" ;
+            rr:termType rr:IRI ] .
+
+map:Organization a rr:TriplesMap ;
+    rr:logicalTable query:Patient ;
+    rr:subjectMap [ rr:class roo:C19326 ;
+            rr:template "organization/{organization}" ;
+            rr:termType rr:IRI ] .
+
+map:PartialBreastIrradiation a rr:TriplesMap ;
+    rr:logicalTable query:PartialBreast ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "mamma" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class dica:PartialBreastIrradiation ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Breast/PartialBreastIrradiation" ;
+            rr:termType rr:IRI ] .
+
+map:PrescribedFractions1 a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseTumorbed ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "fractiestmrbed" ] ;
+            rr:predicate roo:P100223 ] ;
+    rr:subjectMap [ rr:class roo:C100354 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseTumorbed/fractions" ;
+            rr:termType rr:IRI ] .
+
+map:PrescribedFractions2 a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseKlierbst ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "fractiesklierbst" ] ;
+            rr:predicate roo:P100223 ] ;
+    rr:subjectMap [ rr:class roo:C100354 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseNode/fractions" ;
+            rr:termType rr:IRI ] .
+
+map:PrescribedFractions3 a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseElective ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "fractieselectief" ] ;
+            rr:predicate roo:P100223 ] ;
+    rr:subjectMap [ rr:class roo:C100354 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseElective/fractions" ;
+            rr:termType rr:IRI ] .
+
+map:PtvD2 a rr:TriplesMap ;
+    rr:logicalTable map:PtvTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "ptvtotelecd2" ;
+                    rr:datatype xsd:float ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class roo:C100326 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Ptv/D2" ;
+            rr:termType rr:IRI ] .
+
+map:PtvD98 a rr:TriplesMap ;
+    rr:logicalTable map:PtvTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "ptvtotelecd98" ;
+                    rr:datatype xsd:float ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class roo:C100324 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Ptv/D98" ;
+            rr:termType rr:IRI ] .
+
+map:PtvDvhMap a rr:TriplesMap ;
+    rr:logicalTable map:PtvTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:PtvMeanDose ] ;
+            rr:predicate roo:P100212 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:PtvD98 ] ;
+            rr:predicate roo:P100212 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:PtvD2 ] ;
+            rr:predicate roo:P100212 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:PtvRoiMap ] ;
+            rr:predicate roo:P100213 ] ;
+    rr:subjectMap [ rr:class ncit:C112816 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Ptv-dvh" ;
+            rr:termType rr:IRI ] .
+
+map:PtvMeanDose a rr:TriplesMap ;
+    rr:logicalTable map:PtvTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "ptvtotelecdmn" ;
+                    rr:datatype xsd:float ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class roo:C100361 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Ptv/MeanDose" ;
+            rr:termType rr:IRI ] .
+
+map:PtvRoiMap a rr:TriplesMap ;
+    rr:logicalTable map:PtvTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:BreastRoiMap ] ;
+            rr:predicate roo:P100236 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:ThoracicWallRoiMap ] ;
+            rr:predicate roo:P100236 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:AxillaRoiMap ] ;
+            rr:predicate roo:P100236 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:InternalMammaryNodesRoiMap ] ;
+            rr:predicate roo:P100236 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:InterpectoralRoiMap ] ;
+            rr:predicate roo:P100236 ] ;
+    rr:subjectMap [ rr:class roo:C100007 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Ptv" ;
+            rr:termType rr:IRI ] .
+
+map:RadioTherapy a rr:TriplesMap ;
+    rr:logicalTable query:BestralingsplanQuery ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:Disease1 ] ;
+            rr:predicate roo:P100402 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:LungsDvhMap ] ;
+            rr:predicate roo:P100260 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:Series3 ] ;
+            rr:predicate roo:P100303 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:RoiPtvNDvhMap ] ;
+            rr:predicate roo:P100260 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ] ;
+                    rr:parentTriplesMap map:DoseNode ] ;
+            rr:predicate roo:P100023 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:DoseTumorbed ] ;
+            rr:predicate roo:P100023 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:RoiPtvPDvhMap ] ;
+            rr:predicate roo:P100260 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ] ;
+                    rr:parentTriplesMap map:intakeconsultrt1 ] ;
+            rr:predicate dica:hasIntakeConsultRT ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:Series2 ] ;
+            rr:predicate roo:P100303 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:RoiExternalDvhMap ] ;
+            rr:predicate roo:P100260 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:Series1 ] ;
+            rr:predicate roo:P100303 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:PtvDvhMap ] ;
+            rr:predicate roo:P100260 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:DoseElective ] ;
+            rr:predicate roo:P100023 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:HeartDvhMap ] ;
+            rr:predicate roo:P100260 ] ;
+    rr:subjectMap [ rr:class roo:C15313 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}" ;
+            rr:termType rr:IRI ] .
+
+map:RoiExternalDvhMap a rr:TriplesMap ;
+    rr:logicalTable map:RoiExternalTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:RoiExternalDvhV95 ] ;
+            rr:predicate roo:P100212 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:RoiExternalDvhMapBoost ] ;
+            rr:predicate roo:P100213 ] ;
+    rr:subjectMap [ rr:class ncit:C112816 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/RoiExternal-dvh" ;
+            rr:termType rr:IRI ] .
+
+map:RoiExternalDvhMapBoost a rr:TriplesMap ;
+    rr:logicalTable map:RoiExternalTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap <http://localhost/mapping/RoiExternalDvhMapBoost/RoiExternal> ] ;
+            rr:predicate roo:P100213 ] ;
+    rr:subjectMap [ rr:class dica:Boost ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/RoiExternal-dvh/Boost" ;
+            rr:termType rr:IRI ] .
+
+<http://localhost/mapping/RoiExternalDvhMapBoost/RoiExternal> a rr:TriplesMap ;
+    rr:logicalTable map:RoiExternalTable ;
+    rr:subjectMap [ rr:class roo:C100120 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/RoiExternal-dvh/Boost/RoiExternal" ;
+            rr:termType rr:IRI ] .
+
+map:RoiExternalDvhV95 a rr:TriplesMap ;
+    rr:logicalTable map:RoiExternalTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:RoiExternalDvhV95Ml ] ;
+            rr:predicate roo:P100233 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:RoiExternalDvhV95Percent ] ;
+            rr:predicate roo:P100233 ] ;
+    rr:subjectMap [ rr:class roo:C100358 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/RoiExternal/v95" ;
+            rr:termType rr:IRI ] .
+
+map:RoiExternalDvhV95Ml a rr:TriplesMap ;
+    rr:logicalTable map:RoiExternalTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "mammav95" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class obo:UO_0000098 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/RoiExternal/v95/volume_ml" ;
+            rr:termType rr:IRI ] .
+
+map:RoiExternalDvhV95Percent a rr:TriplesMap ;
+    rr:logicalTable map:RoiExternalTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:constant 95 ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class obo:UO_0000187 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/RoiExternal/v95/dose_percent" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvN a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseKlierbst ;
+    rr:subjectMap [ rr:class roo:C100610 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseNode/Boost/RoiPtvN" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvND2 a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvNTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "ptvboost2d2" ;
+                    rr:datatype xsd:float ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class roo:C100326 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvN/D2" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvND98 a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvNTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "ptvboost2d98" ;
+                    rr:datatype xsd:float ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class roo:C100324 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvN/D98" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvNDvhMap a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvNTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:RoiPtvND2 ] ;
+            rr:predicate roo:P100212 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:RoiPtvNMeanDose ] ;
+            rr:predicate roo:P100212 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:RoiPtvNDvhMapBoost ] ;
+            rr:predicate roo:P100213 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:RoiPtvND98 ] ;
+            rr:predicate roo:P100212 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:RoiPtvNDvhV95 ] ;
+            rr:predicate roo:P100212 ] ;
+    rr:subjectMap [ rr:class ncit:C112816 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvN-dvh" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvNDvhMapBoost a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvNTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap <http://localhost/mapping/RoiPtvNDvhMapBoost/RoiPtvN> ] ;
+            rr:predicate roo:P100213 ] ;
+    rr:subjectMap [ rr:class dica:Boost ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvN-dvh/Boost" ;
+            rr:termType rr:IRI ] .
+
+<http://localhost/mapping/RoiPtvNDvhMapBoost/RoiPtvN> a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvNTable ;
+    rr:subjectMap [ rr:class roo:C100610 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvN-dvh/Boost/RoiPtvN" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvNDvhV95 a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvNTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:RoiPtvNDvhV95Ml ] ;
+            rr:predicate roo:P100233 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:RoiPtvNDvhV95Percent ] ;
+            rr:predicate roo:P100233 ] ;
+    rr:subjectMap [ rr:class roo:C100358 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvN/v95" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvNDvhV95Ml a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvNTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "ptvboost2v95" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class obo:UO_0000187 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvN/v95/volume_percent" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvNDvhV95Percent a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvNTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:constant 95 ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class obo:UO_0000187 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvN/v95/dose_percent" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvNMeanDose a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvNTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "ptvboost2dmn" ;
+                    rr:datatype xsd:float ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class roo:C100361 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvN/MeanDose" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvP a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseTumorbed ;
+    rr:subjectMap [ rr:class roo:C100611 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseTumorbed/Boost/RoiPtvP" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvPD2 a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvPTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "ptvboost1d2" ;
+                    rr:datatype xsd:float ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class roo:C100326 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvP/D2" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvPD98 a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvPTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "ptvboost1d98" ;
+                    rr:datatype xsd:float ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class roo:C100324 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvP/D98" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvPDvhMap a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvPTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:RoiPtvPMeanDose ] ;
+            rr:predicate roo:P100212 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:RoiPtvPDvhMapBoost ] ;
+            rr:predicate roo:P100213 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:RoiPtvPDvhV95 ] ;
+            rr:predicate roo:P100212 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:RoiPtvPD98 ] ;
+            rr:predicate roo:P100212 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:RoiPtvPD2 ] ;
+            rr:predicate roo:P100212 ] ;
+    rr:subjectMap [ rr:class ncit:C112816 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvP-dvh" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvPDvhMapBoost a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvPTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap <http://localhost/mapping/RoiPtvPDvhMapBoost/RoiPtvP> ] ;
+            rr:predicate roo:P100213 ] ;
+    rr:subjectMap [ rr:class dica:Boost ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvP-dvh/Boost" ;
+            rr:termType rr:IRI ] .
+
+<http://localhost/mapping/RoiPtvPDvhMapBoost/RoiPtvP> a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvPTable ;
+    rr:subjectMap [ rr:class roo:C100611 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvP-dvh/Boost/RoiPtvP" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvPDvhV95 a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvPTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:RoiPtvPDvhV95Percent ] ;
+            rr:predicate roo:P100233 ],
+        [ rr:objectMap [ rr:joinCondition [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:RoiPtvPDvhV95Ml ] ;
+            rr:predicate roo:P100233 ] ;
+    rr:subjectMap [ rr:class roo:C100358 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvP/v95" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvPDvhV95Ml a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvPTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "ptvboost1v95" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class obo:UO_0000187 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvP/v95/volume_percent" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvPDvhV95Percent a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvPTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:constant 95 ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class obo:UO_0000187 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvP/v95/dose_percent" ;
+            rr:termType rr:IRI ] .
+
+map:RoiPtvPMeanDose a rr:TriplesMap ;
+    rr:logicalTable map:RoiPtvPTable ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "ptvboost1dmn" ;
+                    rr:datatype xsd:float ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class roo:C100361 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/RoiPtvP/MeanDose" ;
+            rr:termType rr:IRI ] .
+
+map:RoiTotalElective a rr:TriplesMap ;
+    rr:logicalTable query:PrescribedDoseElective ;
+    rr:subjectMap [ rr:class dica:RoiTotalElective ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseElective/RoiTotalElective" ;
+            rr:termType rr:IRI ] .
+
+map:SIBboost1 a rr:TriplesMap ;
+    rr:logicalTable query:SIBboost ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "boost" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class dica:SIBboost ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseTumorbed/Boost/SIBboost" ;
+            rr:termType rr:IRI ] .
+
+map:SIBboost2 a rr:TriplesMap ;
+    rr:logicalTable query:SIBboost ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "boost" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class dica:SIBboost ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseNode/Boost/SIBboost" ;
+            rr:termType rr:IRI ] .
+
+map:Sequentialboost1 a rr:TriplesMap ;
+    rr:logicalTable query:Sequentialboost ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "boost" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class dica:Sequentialboost ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseTumorbed/Boost/Sequentialboost" ;
+            rr:termType rr:IRI ] .
+
+map:Sequentialboost2 a rr:TriplesMap ;
+    rr:logicalTable query:Sequentialboost ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "boost" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class dica:Sequentialboost ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/DoseNode/Boost/Sequentialboost" ;
+            rr:termType rr:IRI ] .
+
+map:Series1 a rr:TriplesMap ;
+    rr:logicalTable query:BestralingsplanQuery ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "datplanningct" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate dcm:ATT00080021 ] ;
+    rr:subjectMap [ rr:class dcm:Series ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/ct_series" ;
+            rr:termType rr:IRI ] .
+
+map:Series2 a rr:TriplesMap ;
+    rr:logicalTable query:BestralingsplanQuery ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "datplanningct" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate dcm:ATT00080021 ] ;
+    rr:subjectMap [ rr:class dcm:Series ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/ct_series" ;
+            rr:termType rr:IRI ] .
+
+map:Series3 a rr:TriplesMap ;
+    rr:logicalTable query:BestralingsplanQuery ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "datplanningct" ;
+                    rr:datatype xsd:string ] ;
+            rr:predicate dcm:ATT00080021 ] ;
+    rr:subjectMap [ rr:class dcm:Series ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/ct_series" ;
+            rr:termType rr:IRI ] .
+
+map:ThoracicWallRoiMap a rr:TriplesMap ;
+    rr:logicalTable map:ThoracicWallTable ;
+    rr:subjectMap [ rr:class fma:fma10428 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/ThoracicWall" ;
+            rr:termType rr:IRI ] .
+
+map:ThoracicWallTable a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct from bestralingsplan where thxwand is True " .
+
+map:ctvMamma a rr:TriplesMap ;
+    rr:logicalTable query:ctvMamma ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:ctvMammaMl ] ;
+            rr:predicate roo:P100027 ] ;
+    rr:subjectMap [ rr:class ncit:C25335 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Breast/ctvMamma" ;
+            rr:termType rr:IRI ] .
+
+map:ctvMammaMl a rr:TriplesMap ;
+    rr:logicalTable query:ctvMamma ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "ctvmamma" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class obo:UO_0000098 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/Roi/Breast/ctvMamma/ml" ;
+            rr:termType rr:IRI ] .
+
+map:intakeconsultrt1 a rr:TriplesMap ;
+    rr:logicalTable query:intakeconsultrt1 ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ],
+                        [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ] ;
+                    rr:parentTriplesMap map:intakeconsultrtdate1 ] ;
+            rr:predicate roo:P100228 ] ;
+    rr:subjectMap [ rr:class dica:IntakeConsultRadiotherapy ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/IntakeConsultRadiotherapy" ;
+            rr:termType rr:IRI ] .
+
+map:intakeconsultrtdate1 a rr:TriplesMap ;
+    rr:logicalTable query:intakeconsultrt1 ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:column "intake_consultrt" ] ;
+            rr:predicate roo:P100041 ] ;
+    rr:subjectMap [ rr:class ncit:C25164 ;
+            rr:template "organization/{organization}/patient/{upn}/treatment/{datplanningct}/IntakeConsultRadiotherapy/Date" ;
+            rr:termType rr:IRI ] .
+
+query:PartialBreast a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, mamma from bestralingsplan where mamma = 2 " .
+
+map:Disease1 a rr:TriplesMap ;
+    rr:logicalTable query:BestralingsplanQuery ;
+    rr:predicateObjectMap [ rr:objectMap [ rr:joinCondition [ rr:child "organization" ;
+                            rr:parent "organization" ],
+                        [ rr:child "upn" ;
+                            rr:parent "upn" ],
+                        [ rr:child "datplanningct" ;
+                            rr:parent "datplanningct" ] ;
+                    rr:parentTriplesMap map:Laterality1 ] ;
+            rr:predicate roo:P100343 ] ;
+    rr:subjectMap [ rr:class icd10:C50 ;
+            rr:template "organization/{organization}/patient/{upn}/neoplasm" ;
+            rr:termType rr:IRI ] .
+
+query:Death a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datovl from patient where datovl is not null" .
+
+query:SIBboost a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, boost from bestralingsplan where boost = 'SIB' " .
+
+query:Sequentialboost a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, boost from bestralingsplan where boost = 'Sequential boost' " .
+
+query:ctvMamma a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, ctvmamma, mamma from bestralingsplan where mamma = 1 " .
+
+query:intakeconsultrt1 a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, intake_consultrt from bestralingsplan" .
+
+map:LungsTable a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, long from bestralingsplan where long is not null" .
+
+map:HeartTable a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, hartdmn, hartd2 from bestralingsplan where hartdmn is not null or hartd2 is not null" .
+
+query:Patient a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, geslacht, geboortedatum, datovl from patient " .
+
+map:PtvTable a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, ptvtotelecd2, ptvtotelecd98, ptvtotelecdmn from bestralingsplan where ptvtotelecd2 is not null or ptvtotelecd98 is not null or ptvtotelecdmn is not null" .
+
+query:PrescribedDoseElective a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, fractieselectief, dosiselectief from bestralingsplan where fractieselectief is not null or dosiselectief is not null " .
+
+map:RoiExternalTable a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, mammav95 from bestralingsplan where mammav95 is not Null" .
+
+query:BestralingsplanQuery a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct , case when bestraling_later = 1 then 'left'  when bestraling_later = 2 then 'right'  when bestraling_later = 3 then 'beide' end as bestraling_later from bestralingsplan" .
+
+query:PrescribedDoseKlierbst a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, fractiesklierbst, dosisklierbst, boost2 from bestralingsplan where boost2 is True " .
+
+query:PrescribedDoseTumorbed a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, fractiestmrbed, dosistmrbed, boost1 from bestralingsplan where boost1 is True " .
+
+map:RoiPtvNTable a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, boost2, ptvboost2v95, ptvboost2d2, ptvboost2d98, ptvboost2dmn from bestralingsplan where boost2 is True" .
+
+map:RoiPtvPTable a rr:LogicalTable ;
+    rr:sqlQuery "select organization, upn, datplanningct, boost1, ptvboost1v95, ptvboost1d2, ptvboost1d98, ptvboost1dmn from bestralingsplan where boost1 is True" .
+
