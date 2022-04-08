@@ -1,39 +1,13 @@
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/ct_series>
-  a <http://semantic-dicom.org/dcm#Series>;
-  <http://semantic-dicom.org/dcm#ATT00080021> "2020-01-01" .
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/death> a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28554>;
+  <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P100250> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/death/date> .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal/v95>
-  a <http://www.cancerdata.org/roo/C100358>;
-  <http://www.cancerdata.org/roo/P100233> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal/v95/dose_percent>,
-    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal/v95/volume_ml> .
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Axilla34>
+  a <http://dica.nl/fair/rt/Axilla34>;
+  <http://www.cancerdata.org/roo/P100041> true .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Axilla>
-  a <http://purl.org/sig/ont/fma/fma71741>;
-  <http://www.cancerdata.org/roo/P100236> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Axilla12>,
-    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Axilla34> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/neoplasm> a <http://purl.bioontology.org/ontology/ICD10/C50C50>;
-  <http://www.cancerdata.org/roo/P100343> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/laterality> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal/v95/dose_percent>
-  a <http://purl.obolibrary.org/obo/UO_0000187>;
-  <http://www.cancerdata.org/roo/P100041> "95" .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/D2>
-  a <http://www.cancerdata.org/roo/C100326>;
-  <http://www.cancerdata.org/roo/P100041> "5.5234250000000005E1"^^<http://www.w3.org/2001/XMLSchema#float> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Breast/PartialBreastIrradiation>
-  a <http://dica.nl/fair/rt/PartialBreastIrradiation>;
-  <http://www.cancerdata.org/roo/P100041> 2 .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/IntakeConsultRadiotherapy/Date>
-  a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25164>;
-  <http://www.cancerdata.org/roo/P100041> "2019-12-15"^^<http://www.w3.org/2001/XMLSchema#date> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal-dvh/Boost/RoiExternal>
-  a <http://www.cancerdata.org/roo/C100120> .
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/InternalMammaryNodes>
+  a <http://purl.org/sig/ont/fma/fma71760> .
 
 <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed>
   a <http://www.cancerdata.org/roo/C100013>;
@@ -41,8 +15,64 @@
   <http://www.cancerdata.org/roo/P100224> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/fractions>;
   <http://www.cancerdata.org/roo/P100268> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/FractionDose> .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Heart>
-  a <http://www.cancerdata.org/roo/C100129> .
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/v95/dose_percent>
+  a <http://purl.obolibrary.org/obo/UO_0000187>;
+  <http://www.cancerdata.org/roo/P100041> "95" .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/gender> a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28421>;
+  <http://www.cancerdata.org/roo/P100041> "F" .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal/v95>
+  a <http://www.cancerdata.org/roo/C100358>;
+  <http://www.cancerdata.org/roo/P100233> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal/v95/dose_percent>,
+    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal/v95/volume_ml> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/ThoracicWall>
+  a <http://purl.org/sig/ont/fma/fma10428> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal>
+  a <http://www.cancerdata.org/roo/C100120> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode>
+  a <http://www.cancerdata.org/roo/C100013>;
+  <http://dica.nl/fair/rt/hasBoost> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/Boost>;
+  <http://www.cancerdata.org/roo/P100224> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/fractions>;
+  <http://www.cancerdata.org/roo/P100268> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/FractionDose> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/ct_series>
+  a <http://semantic-dicom.org/dcm#Series>;
+  <http://semantic-dicom.org/dcm#ATT00080021> "2020-01-01" .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1> a <http://www.cancerdata.org/roo/C19326> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Breast>
+  a <http://purl.org/sig/ont/fma/fma9601>;
+  <http://www.cancerdata.org/roo/P100403> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Breast/PartialBreastIrradiation> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/Boost/RoiPtvP>
+  a <http://www.cancerdata.org/roo/C100611> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal/v95/volume_ml>
+  a <http://purl.obolibrary.org/obo/UO_0000098>;
+  <http://www.cancerdata.org/roo/P100041> 1.301E2 .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/Boost>
+  a <http://dica.nl/fair/rt/Boost>;
+  <http://dica.nl/fair/rt/hasBoostType> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/Boost/SIBboost>;
+  <http://www.cancerdata.org/roo/P100041> true;
+  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/Boost/RoiPtvN> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Lungs-dvh>
+  a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C112816>;
+  <http://www.cancerdata.org/roo/P100212> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Lungs/MeanDose>;
+  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Lungs> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP>
+  a <http://www.cancerdata.org/roo/C100611> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective/FractionDose>
+  a <http://www.cancerdata.org/roo/C100353>;
+  <http://www.cancerdata.org/roo/P100027> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective/FractionDose/gray> .
 
 <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN-dvh>
   a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C112816>;
@@ -50,19 +80,60 @@
     <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/D98>,
     <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/MeanDose>,
     <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/v95>;
-  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN-dvh/Boost> .
+  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN>,
+    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN-dvh/Boost> .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Breast>
-  a <http://purl.org/sig/ont/fma/fma9601>;
-  <http://www.cancerdata.org/roo/P100403> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Breast/PartialBreastIrradiation> .
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Breast/PartialBreastIrradiation>
+  a <http://dica.nl/fair/rt/PartialBreastIrradiation>;
+  <http://www.cancerdata.org/roo/P100041> 2 .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Axilla34>
-  a <http://dica.nl/fair/rt/Axilla34>;
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/Boost>
+  a <http://dica.nl/fair/rt/Boost>;
+  <http://dica.nl/fair/rt/hasBoostType> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/Boost/SIBboost>;
+  <http://www.cancerdata.org/roo/P100041> true;
+  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/Boost/RoiPtvP> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Axilla12>
+  a <http://dica.nl/fair/rt/Axilla12>;
   <http://www.cancerdata.org/roo/P100041> true .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv-dvh>
+  a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C112816>;
+  <http://www.cancerdata.org/roo/P100212> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv/D2>,
+    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv/D98>,
+    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv/MeanDose>;
+  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/v95/dose_percent>
+  a <http://purl.obolibrary.org/obo/UO_0000187>;
+  <http://www.cancerdata.org/roo/P100041> "95" .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/FractionDose>
+  a <http://www.cancerdata.org/roo/C100353>;
+  <http://www.cancerdata.org/roo/P100027> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/FractionDose/gray> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/D98>
+  a <http://www.cancerdata.org/roo/C100324>;
+  <http://www.cancerdata.org/roo/P100041> "5.145352E1"^^<http://www.w3.org/2001/XMLSchema#float> .
 
 <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/death/date> a
     <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25164>;
   <http://www.cancerdata.org/roo/P100041> "2020-11-23"^^<http://www.w3.org/2001/XMLSchema#date> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345> a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16960>;
+  <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P100253> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/death>;
+  <http://www.cancerdata.org/roo/P100008> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/neoplasm>;
+  <http://www.cancerdata.org/roo/P100018> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/gender>;
+  <http://www.cancerdata.org/roo/P100039> <http://mrdm.nl/fair/nbcar/organization/organization1>;
+  <http://www.cancerdata.org/roo/P100301> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01>;
+  <http://www.cancerdata.org/roo/P100327> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/dob> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/neoplasm> a <http://purl.bioontology.org/ontology/ICD10/C50C50>;
+  <http://www.cancerdata.org/roo/P100343> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/laterality> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Heart/MeanDose>
+  a <http://www.cancerdata.org/roo/C100361>;
+  <http://www.cancerdata.org/roo/P100041> "4.5E0"^^<http://www.w3.org/2001/XMLSchema#float> .
 
 <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01>
   a <http://www.cancerdata.org/roo/C15313>;
@@ -79,59 +150,61 @@
   <http://www.cancerdata.org/roo/P100303> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/ct_series>;
   <http://www.cancerdata.org/roo/P100402> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/neoplasm> .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1> a <http://www.cancerdata.org/roo/C19326> .
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv/MeanDose>
+  a <http://www.cancerdata.org/roo/C100361>;
+  <http://www.cancerdata.org/roo/P100041> "4.0125E1"^^<http://www.w3.org/2001/XMLSchema#float> .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN-dvh/Boost>
-  a <http://dica.nl/fair/rt/Boost>;
-  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN-dvh/Boost/RoiPtvN> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/gender> a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28421>;
-  <http://www.cancerdata.org/roo/P100041> "F" .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/Boost>
-  a <http://dica.nl/fair/rt/Boost>;
-  <http://dica.nl/fair/rt/hasBoostType> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/Boost/SIBboost>;
-  <http://www.cancerdata.org/roo/P100041> true;
-  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/Boost/RoiPtvN> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/Boost/SIBboost>
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/Boost/SIBboost>
   a <http://dica.nl/fair/rt/SIBboost>;
   <http://www.cancerdata.org/roo/P100041> "SIB" .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/Boost/RoiPtvP>
-  a <http://www.cancerdata.org/roo/C100611> .
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/MeanDose>
+  a <http://www.cancerdata.org/roo/C100361>;
+  <http://www.cancerdata.org/roo/P100041> "5.254E1"^^<http://www.w3.org/2001/XMLSchema#float> .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/InternalMammaryNodes>
-  a <http://purl.org/sig/ont/fma/fma71760> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode>
-  a <http://www.cancerdata.org/roo/C100013>;
-  <http://dica.nl/fair/rt/hasBoost> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/Boost>;
-  <http://www.cancerdata.org/roo/P100224> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/fractions>;
-  <http://www.cancerdata.org/roo/P100268> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/FractionDose> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP-dvh/Boost/RoiPtvP>
-  a <http://www.cancerdata.org/roo/C100611> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective/FractionDose/gray>
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/FractionDose/gray>
   a <http://purl.obolibrary.org/obo/UO_0000134>;
   <http://www.cancerdata.org/roo/P100041> 2.18E0 .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Interpectoral>
-  a <http://purl.org/sig/ont/fma/fma71750> .
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/laterality>
+  a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25185>;
+  <http://www.cancerdata.org/roo/P100041> "left" .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/v95>
-  a <http://www.cancerdata.org/roo/C100358>;
-  <http://www.cancerdata.org/roo/P100233> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/v95/dose_percent>,
-    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/v95/volume_percent> .
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/fractions>
+  a <http://www.cancerdata.org/roo/C100354>;
+  <http://www.cancerdata.org/roo/P100223> 20 .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal-dvh/Boost>
+  a <http://dica.nl/fair/rt/Boost> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/D2>
+  a <http://www.cancerdata.org/roo/C100326>;
+  <http://www.cancerdata.org/roo/P100041> "5.5234250000000005E1"^^<http://www.w3.org/2001/XMLSchema#float> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/dob> a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155>;
+  <http://www.cancerdata.org/roo/P100041> "11-01-1986" .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/v95/volume_percent>
+  a <http://purl.obolibrary.org/obo/UO_0000187>;
+  <http://www.cancerdata.org/roo/P100041> 1.0E2 .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/D98>
+  a <http://www.cancerdata.org/roo/C100324>;
+  <http://www.cancerdata.org/roo/P100041> "5.145352E1"^^<http://www.w3.org/2001/XMLSchema#float> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv/D2>
+  a <http://www.cancerdata.org/roo/C100326>;
+  <http://www.cancerdata.org/roo/P100041> "4.13E1"^^<http://www.w3.org/2001/XMLSchema#float> .
 
 <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/fractions>
   a <http://www.cancerdata.org/roo/C100354>;
   <http://www.cancerdata.org/roo/P100223> 20 .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv/MeanDose>
-  a <http://www.cancerdata.org/roo/C100361>;
-  <http://www.cancerdata.org/roo/P100041> "4.0125E1"^^<http://www.w3.org/2001/XMLSchema#float> .
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Heart>
+  a <http://www.cancerdata.org/roo/C100129> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP-dvh/Boost>
+  a <http://dica.nl/fair/rt/Boost> .
 
 <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv>
   a <http://www.cancerdata.org/roo/C100007>;
@@ -141,172 +214,13 @@
     <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Interpectoral>,
     <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/ThoracicWall> .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP-dvh>
-  a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C112816>;
-  <http://www.cancerdata.org/roo/P100212> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/D2>,
-    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/D98>,
-    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/MeanDose>,
-    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/v95>;
-  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP-dvh/Boost> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/v95/volume_percent>
-  a <http://purl.obolibrary.org/obo/UO_0000187>;
-  <http://www.cancerdata.org/roo/P100041> 1.0E2 .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/D98>
-  a <http://www.cancerdata.org/roo/C100324>;
-  <http://www.cancerdata.org/roo/P100041> "5.145352E1"^^<http://www.w3.org/2001/XMLSchema#float> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/MeanDose>
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/MeanDose>
   a <http://www.cancerdata.org/roo/C100361>;
   <http://www.cancerdata.org/roo/P100041> "5.254E1"^^<http://www.w3.org/2001/XMLSchema#float> .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal-dvh/Boost>
-  a <http://dica.nl/fair/rt/Boost>;
-  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal-dvh/Boost/RoiExternal> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Lungs>
-  a <http://www.cancerdata.org/roo/C100139> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Heart/D2>
-  a <http://www.cancerdata.org/roo/C100326>;
-  <http://www.cancerdata.org/roo/P100041> "3.5E0"^^<http://www.w3.org/2001/XMLSchema#float> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal/v95/volume_ml>
-  a <http://purl.obolibrary.org/obo/UO_0000098>;
-  <http://www.cancerdata.org/roo/P100041> 1.301E2 .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/v95/dose_percent>
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal/v95/dose_percent>
   a <http://purl.obolibrary.org/obo/UO_0000187>;
   <http://www.cancerdata.org/roo/P100041> "95" .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective>
-  a <http://www.cancerdata.org/roo/C100013>;
-  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective/RoiTotalElective>;
-  <http://www.cancerdata.org/roo/P100224> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective/fractions>;
-  <http://www.cancerdata.org/roo/P100268> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective/FractionDose> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv/D2>
-  a <http://www.cancerdata.org/roo/C100326>;
-  <http://www.cancerdata.org/roo/P100041> "4.13E1"^^<http://www.w3.org/2001/XMLSchema#float> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/Boost/RoiPtvN>
-  a <http://www.cancerdata.org/roo/C100610> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/FractionDose>
-  a <http://www.cancerdata.org/roo/C100353>;
-  <http://www.cancerdata.org/roo/P100027> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/FractionDose/gray> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective/fractions>
-  a <http://www.cancerdata.org/roo/C100354>;
-  <http://www.cancerdata.org/roo/P100223> 20 .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/FractionDose>
-  a <http://www.cancerdata.org/roo/C100353>;
-  <http://www.cancerdata.org/roo/P100027> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/FractionDose/gray> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/v95>
-  a <http://www.cancerdata.org/roo/C100358>;
-  <http://www.cancerdata.org/roo/P100233> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/v95/dose_percent>,
-    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/v95/volume_percent> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345> a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16960>;
-  <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P100253> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/death>;
-  <http://www.cancerdata.org/roo/P100008> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/neoplasm>;
-  <http://www.cancerdata.org/roo/P100018> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/gender>;
-  <http://www.cancerdata.org/roo/P100039> <http://mrdm.nl/fair/nbcar/organization/organization1>;
-  <http://www.cancerdata.org/roo/P100301> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01>;
-  <http://www.cancerdata.org/roo/P100327> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/dob> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal-dvh>
-  a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C112816>;
-  <http://www.cancerdata.org/roo/P100212> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal/v95>;
-  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal-dvh/Boost> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/D98>
-  a <http://www.cancerdata.org/roo/C100324>;
-  <http://www.cancerdata.org/roo/P100041> "5.145352E1"^^<http://www.w3.org/2001/XMLSchema#float> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Lungs/MeanDose>
-  a <http://www.cancerdata.org/roo/C100361>;
-  <http://www.cancerdata.org/roo/P100041> "6.5E0"^^<http://www.w3.org/2001/XMLSchema#float> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP-dvh/Boost>
-  a <http://dica.nl/fair/rt/Boost>;
-  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP-dvh/Boost/RoiPtvP> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/IntakeConsultRadiotherapy>
-  a <http://dica.nl/fair/rt/IntakeConsultRadiotherapy>;
-  <http://www.cancerdata.org/roo/P100228> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/IntakeConsultRadiotherapy/Date> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Heart/MeanDose>
-  a <http://www.cancerdata.org/roo/C100361>;
-  <http://www.cancerdata.org/roo/P100041> "4.5E0"^^<http://www.w3.org/2001/XMLSchema#float> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/Boost>
-  a <http://dica.nl/fair/rt/Boost>;
-  <http://dica.nl/fair/rt/hasBoostType> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/Boost/SIBboost>;
-  <http://www.cancerdata.org/roo/P100041> true;
-  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/Boost/RoiPtvP> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective/RoiTotalElective>
-  a <http://dica.nl/fair/rt/RoiTotalElective> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/v95/volume_percent>
-  a <http://purl.obolibrary.org/obo/UO_0000187>;
-  <http://www.cancerdata.org/roo/P100041> 1.0E2 .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/FractionDose/gray>
-  a <http://purl.obolibrary.org/obo/UO_0000134>;
-  <http://www.cancerdata.org/roo/P100041> 2.18E0 .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective/FractionDose>
-  a <http://www.cancerdata.org/roo/C100353>;
-  <http://www.cancerdata.org/roo/P100027> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective/FractionDose/gray> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/D2>
-  a <http://www.cancerdata.org/roo/C100326>;
-  <http://www.cancerdata.org/roo/P100041> "5.5234250000000005E1"^^<http://www.w3.org/2001/XMLSchema#float> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN-dvh/Boost/RoiPtvN>
-  a <http://www.cancerdata.org/roo/C100610> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/fractions>
-  a <http://www.cancerdata.org/roo/C100354>;
-  <http://www.cancerdata.org/roo/P100223> 20 .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv-dvh>
-  a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C112816>;
-  <http://www.cancerdata.org/roo/P100212> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv/D2>,
-    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv/D98>,
-    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv/MeanDose>;
-  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Axilla12>
-  a <http://dica.nl/fair/rt/Axilla12>;
-  <http://www.cancerdata.org/roo/P100041> true .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/laterality>
-  a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25185>;
-  <http://www.cancerdata.org/roo/P100041> "left" .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/ThoracicWall>
-  a <http://purl.org/sig/ont/fma/fma10428> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/Boost/SIBboost>
-  a <http://dica.nl/fair/rt/SIBboost>;
-  <http://www.cancerdata.org/roo/P100041> "SIB" .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv/D98>
-  a <http://www.cancerdata.org/roo/C100324>;
-  <http://www.cancerdata.org/roo/P100041> "3.8840000000000003E1"^^<http://www.w3.org/2001/XMLSchema#float> .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/FractionDose/gray>
-  a <http://purl.obolibrary.org/obo/UO_0000134>;
-  <http://www.cancerdata.org/roo/P100041> 2.18E0 .
-
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/death> a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28554>;
-  <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P100250> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/death/date> .
 
 <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Heart-dvh>
   a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C112816>;
@@ -314,18 +228,104 @@
     <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Heart/MeanDose>;
   <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Heart> .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/dob> a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155>;
-  <http://www.cancerdata.org/roo/P100041> "11-01-1986" .
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Ptv/D98>
+  a <http://www.cancerdata.org/roo/C100324>;
+  <http://www.cancerdata.org/roo/P100041> "3.8840000000000003E1"^^<http://www.w3.org/2001/XMLSchema#float> .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/MeanDose>
-  a <http://www.cancerdata.org/roo/C100361>;
-  <http://www.cancerdata.org/roo/P100041> "5.254E1"^^<http://www.w3.org/2001/XMLSchema#float> .
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective>
+  a <http://www.cancerdata.org/roo/C100013>;
+  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective/RoiTotalElective>;
+  <http://www.cancerdata.org/roo/P100224> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective/fractions>;
+  <http://www.cancerdata.org/roo/P100268> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective/FractionDose> .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Lungs-dvh>
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/D2>
+  a <http://www.cancerdata.org/roo/C100326>;
+  <http://www.cancerdata.org/roo/P100041> "5.5234250000000005E1"^^<http://www.w3.org/2001/XMLSchema#float> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/FractionDose/gray>
+  a <http://purl.obolibrary.org/obo/UO_0000134>;
+  <http://www.cancerdata.org/roo/P100041> 2.18E0 .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN-dvh/Boost>
+  a <http://dica.nl/fair/rt/Boost> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN>
+  a <http://www.cancerdata.org/roo/C100610> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal-dvh>
   a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C112816>;
-  <http://www.cancerdata.org/roo/P100212> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Lungs/MeanDose>;
-  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Lungs> .
+  <http://www.cancerdata.org/roo/P100212> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal/v95>;
+  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal>,
+    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/RoiExternal-dvh/Boost> .
 
-<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/v95/dose_percent>
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/FractionDose>
+  a <http://www.cancerdata.org/roo/C100353>;
+  <http://www.cancerdata.org/roo/P100027> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/FractionDose/gray> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Interpectoral>
+  a <http://purl.org/sig/ont/fma/fma71750> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseNode/Boost/RoiPtvN>
+  a <http://www.cancerdata.org/roo/C100610> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/v95>
+  a <http://www.cancerdata.org/roo/C100358>;
+  <http://www.cancerdata.org/roo/P100233> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/v95/dose_percent>,
+    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvN/v95/volume_percent> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Heart/D2>
+  a <http://www.cancerdata.org/roo/C100326>;
+  <http://www.cancerdata.org/roo/P100041> "3.5E0"^^<http://www.w3.org/2001/XMLSchema#float> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective/RoiTotalElective>
+  a <http://dica.nl/fair/rt/RoiTotalElective> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective/fractions>
+  a <http://www.cancerdata.org/roo/C100354>;
+  <http://www.cancerdata.org/roo/P100223> 20 .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Lungs/MeanDose>
+  a <http://www.cancerdata.org/roo/C100361>;
+  <http://www.cancerdata.org/roo/P100041> "6.5E0"^^<http://www.w3.org/2001/XMLSchema#float> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseElective/FractionDose/gray>
+  a <http://purl.obolibrary.org/obo/UO_0000134>;
+  <http://www.cancerdata.org/roo/P100041> 2.18E0 .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/IntakeConsultRadiotherapy/Date>
+  a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25164>;
+  <http://www.cancerdata.org/roo/P100041> "2019-12-15"^^<http://www.w3.org/2001/XMLSchema#date> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP-dvh>
+  a <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C112816>;
+  <http://www.cancerdata.org/roo/P100212> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/D2>,
+    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/D98>,
+    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/MeanDose>,
+    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/v95>;
+  <http://www.cancerdata.org/roo/P100213> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP>,
+    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP-dvh/Boost> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/IntakeConsultRadiotherapy>
+  a <http://dica.nl/fair/rt/IntakeConsultRadiotherapy>;
+  <http://www.cancerdata.org/roo/P100228> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/IntakeConsultRadiotherapy/Date> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/v95>
+  a <http://www.cancerdata.org/roo/C100358>;
+  <http://www.cancerdata.org/roo/P100233> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/v95/dose_percent>,
+    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/v95/volume_percent> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Lungs>
+  a <http://www.cancerdata.org/roo/C100139> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/DoseTumorbed/Boost/SIBboost>
+  a <http://dica.nl/fair/rt/SIBboost>;
+  <http://www.cancerdata.org/roo/P100041> "SIB" .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Axilla>
+  a <http://purl.org/sig/ont/fma/fma71741>;
+  <http://www.cancerdata.org/roo/P100236> <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Axilla12>,
+    <http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/Roi/Axilla34> .
+
+<http://mrdm.nl/fair/nbcar/organization/organization1/patient/12345/treatment/2020-01-01/RoiPtvP/v95/volume_percent>
   a <http://purl.obolibrary.org/obo/UO_0000187>;
-  <http://www.cancerdata.org/roo/P100041> "95" .
+  <http://www.cancerdata.org/roo/P100041> 1.0E2 .
